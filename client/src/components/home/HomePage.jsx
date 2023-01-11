@@ -26,7 +26,7 @@ function HomePage() {
         <Link to="/battery">battery</Link>
       </div>
       <div>
-        <Link to="/networke">network</Link>
+        <Link to="/network">network</Link>
       </div>
     </div>
   );
@@ -36,7 +36,7 @@ function HomePage() {
 export default HomePage;
 
 export const homeLoader = () => (
-  axios.get('http://localhost:3000/api/homeData')
+  axios.get('http://localhost:3000/api/home')
     .then((response) => {
       console.log(response);
       return response.data;
