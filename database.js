@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/VanMadeDashboard', { useNewUrlParser: true, useUnifiedTopology: true });
 
-
+const weatherSchema = mongoose.Schema({
+  updated: Date,
+  gridId: String,
+  gridX: Number,
+  gridY: Number,
+  forecast: [],
+});
 // let repoSchema = mongoose.Schema({
 //   // TODO: your schema here!
 //   //Think of this like were storing one parameter

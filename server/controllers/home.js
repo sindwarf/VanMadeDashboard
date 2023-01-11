@@ -1,3 +1,11 @@
+const models = require('../models');
+
 exports.get = (req, res) => {
-  res.status(201).send('successful server response');
+  models.weather.get()
+    .then((response) => {
+      res.status(201).send(response);
+    })
+    .catch((err) => {
+      res.status(501).send(err.message);
+    });
 };
