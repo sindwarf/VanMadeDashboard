@@ -10,6 +10,18 @@ const weatherSchema = mongoose.Schema({
   forecast: [],
 });
 
+const batterySchema = mongoose.Schema({
+  date: { type: Date, default: Date.now()},
+  voltage: Number, // mV
+  current: Number, // mA
+  temp: Number, // C
+  iPower: Number, // watts
+  consumed: Number, // mAh
+  soc: Number, // %
+  alarm: Boolean, // alarm condition active
+});
+
+const batteryModel = mongoose.model('batteryEntries', batterySchema);
 const CurrentWeatherModel = mongoose.model('weather', weatherSchema);
 
 exports.updateWeather = (weatherObj) => {
@@ -22,18 +34,10 @@ exports.updateWeather = (weatherObj) => {
 exports.getCurrentWeather = () => (
   CurrentWeatherModel.find({ id: 1 })
 );
-// let repoSchema = mongoose.Schema({
-//   // TODO: your schema here!
-//   //Think of this like were storing one parameter
-//   id : {type : Number, unique : true},
-//   username : String,
-//   repoName : String,
-//   description : String,
-//   forkCount : Number, //filter by top 25
-//   watchers : Number,
-//   repoUrl : String
-//   //some useful parameter to filter top 25 repos by
-// });
+
+exports.getRecentBatteryData = () => (
+  batteryModel.find({}).sort('-date').limit(25)
+);
 
 // //
 

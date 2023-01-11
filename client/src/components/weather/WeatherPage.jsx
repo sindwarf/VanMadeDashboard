@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import {
-  useLocation,
   useLoaderData,
 } from 'react-router-dom';
 
@@ -35,7 +34,7 @@ export default WeatherPage;
 export const weatherLoader = () => (
   axios.get('http://localhost:3000/api/weather')
     .then((response) => {
-      console.log(response);
+      console.log('weather response: ', response);
       return response.data;
     })
     .catch((err) => {

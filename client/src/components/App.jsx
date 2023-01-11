@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import HomePage from './home/HomePage';
 import WeatherPage, { weatherLoader } from './weather/WeatherPage';
-import BatteryPage from './battery/BatteryPage';
+import BatteryPage, { batteryLoader } from './battery/BatteryPage';
 import PhotosPage from './photos/PhotosPage';
 import HomeLayout from './layouts/HomeLayout';
 import ErrorPage from '../ErrorPage';
@@ -36,6 +36,7 @@ const router = createBrowserRouter([
         path: 'battery',
         element: <BatteryPage />,
         errorElement: <ErrorPage />,
+        loader: batteryLoader,
       },
       {
         path: 'network',
