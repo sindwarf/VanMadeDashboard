@@ -1,13 +1,45 @@
 import React from 'react';
+import axios from 'axios';
+import {
+  useLocation,
+  useLoaderData,
+} from 'react-router-dom';
 
-function WeatherPage({ test }) {
+function WeatherPage() {
+  const [weatherData] = useLoaderData();
+  console.log('weather data', weatherData);
   return (
     <h1 className="text-3xl font-bold underline">
-      Hello I Am WeatherPage
+      The forecast is
       {' '}
-      { test }
+      {weatherData.forecast.map((forecast, i) => (
+        <div key={i}>
+          <img src={forecast.icon} alt="" />
+          {forecast.name}
+          {forecast.detailedForecast}
+          <p>
+            {forecast.temperature}
+            {forecast.temperatureUnit}
+          </p>
+          Wind speed:
+          {' '}
+          {forecast.windSpeed}
+        </div>
+      ))}
     </h1>
   );
 }
 
 export default WeatherPage;
+
+export const weatherLoader = () => (
+  axios.get('http://localhost:3000/api/weather')
+    .then((response) => {
+      console.log(response);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('ERROR: ', err);
+      return err.message;
+    })
+);

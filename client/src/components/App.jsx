@@ -3,8 +3,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import HomePage, { homeLoader } from './home/HomePage';
-import WeatherPage from './weather/WeatherPage';
+import HomePage from './home/HomePage';
+import WeatherPage, { weatherLoader } from './weather/WeatherPage';
 import BatteryPage from './battery/BatteryPage';
 import PhotosPage from './photos/PhotosPage';
 import HomeLayout from './layouts/HomeLayout';
@@ -24,12 +24,13 @@ const router = createBrowserRouter([
         path: 'home',
         element: <HomePage />,
         errorElement: <ErrorPage />,
-        loader: homeLoader,
+        loader: weatherLoader,
       },
       {
         path: 'weather',
         element: <WeatherPage />,
         errorElement: <ErrorPage />,
+        loader: weatherLoader,
       },
       {
         path: 'battery',

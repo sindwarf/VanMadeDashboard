@@ -1,2 +1,2 @@
-exports.home = require('./home');
+exports.home = require('./battery');
 exports.weather = require('./weather');

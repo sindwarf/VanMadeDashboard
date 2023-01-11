@@ -5,9 +5,9 @@
   "main": "./client/index.jsx",
   "scripts": {
     "bblTest": "nodemon --exec babel-node index.js",
-    "dev": "webpack --watch & nodemon server/index.js",
+    "react-dev": "webpack --watch",
     "build": "webpack",
-    "start": "webpack & nodemon server/index.js",
+    "start-dev": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
