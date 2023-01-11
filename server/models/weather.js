@@ -1,7 +1,10 @@
-exports.get = () => (
-  Promise.resolve('server response in models')
-);
+const db = require('../database');
 
-exports.save = (weatherObj) => {
-  console.log('weatherObj', weatherObj);
+exports.get = () => {
+  // db.getCurrentWeather()
+  //   .then((data) => {
+  //     if(data){}
+  //   });
 };
+
+exports.save = (weatherObj) => (db.updateWeather(weatherObj));
