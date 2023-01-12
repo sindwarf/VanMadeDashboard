@@ -11,7 +11,7 @@ const weatherSchema = mongoose.Schema({
 });
 
 const batterySchema = mongoose.Schema({
-  date: { type: Date, default: Date.now()},
+  date: { type: Date, default: Date.now() },
   voltage: Number, // mV
   current: Number, // mA
   temp: Number, // C
@@ -26,6 +26,7 @@ const CurrentWeatherModel = mongoose.model('weather', weatherSchema);
 
 exports.updateWeather = (weatherObj) => {
   weatherObj.id = 1;
+  // console.log('database: ', weatherObj);
   return CurrentWeatherModel.replaceOne({ id: 1 }, weatherObj, { upsert: true });
   // const currentWeather = new CurrentWeatherModel(weatherObj);
   // return currentWeather.save(weatherObj);
@@ -36,7 +37,7 @@ exports.getCurrentWeather = () => (
 );
 
 exports.getRecentBatteryData = () => (
-  batteryModel.find({}).sort('-date').limit(25)
+  batteryModel.find({}).sort('-date').limit(10)
 );
 
 // //

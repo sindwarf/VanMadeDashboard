@@ -5,14 +5,12 @@ import {
 } from 'react-router-dom';
 
 function WeatherPage() {
-  const [weatherData] = useLoaderData();
+  const weatherData = useLoaderData();
   console.log('weather data', weatherData);
   return (
-    <h1 className="text-3xl font-bold underline">
-      The forecast is
-      {' '}
+    <h1 className="text-2xl underline">
       {weatherData.forecast.map((forecast, i) => (
-        <div key={i}>
+        <div key={i} className="border-2">
           <img src={forecast.icon} alt="" />
           {forecast.name}
           {forecast.detailedForecast}

@@ -3,45 +3,45 @@ import {
   Link,
   useLoaderData,
 } from 'react-router-dom';
-import axios from 'axios';
 
 // loader functions take the place of a useEffect hook,
 // loader functions have the advantage of loading information before the page loads
 
 function HomePage() {
-  const [weatherData] = useLoaderData();
+  const loaderData = useLoaderData();
+  console.log('loaderData', loaderData);
+  const weatherData = loaderData.weather;
+  const batteryData = loaderData.battery[0];
   // weatherData = weatherData[0];
   // navlink lets you style active links
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-        Hello I Am HomePage
-      </h1>
-      <Link to="/weather" state={{ test: 'test' }}>
-        <div>
+    <div className=" bg-slate-500 flex flex-col min-h-screen border-2 p-10 ">
+      <div className="m-5 flex flex-1 border-2 justify-center">
+        <Link to="/weather" className=" bg-lime-800 w-1/5  hover:bg-lime-600 rounded-[22px] flex flex-col justify-between items-center p-6">
           Weather
-          <img src={weatherData.forecast[0].icon} alt="" />
+          <img src={weatherData.forecast[0].icon} className="w-40 h-40" alt="" />
           <p>
             {weatherData.forecast[0].shortForecast}
             {' '}
             {weatherData.forecast[0].temperature}
             {weatherData.forecast[0].temperatureUnit}
           </p>
-        </div>
-        <hr />
-      </Link>
-      <div>
-        <Link to="/battery">
+        </Link>
+      </div>
+      <div className=" m-5 flex flex-1 border-2 justify-center">
+        <Link className=" bg-lime-800 w-1/5  hover:bg-lime-600 rounded-[22px] flex flex-col justify-between items-center p-6" to="/battery">
           Battery
+          <img src="/carBattery.png" className=" w-40 h-40 " alt="" />
           <p>
-            99%
+            {batteryData.soc}
+            %
           </p>
         </Link>
       </div>
-      <hr />
-      <div>
-        <Link to="/network">
+      <div className="m-5 flex flex-1 border-2 justify-center">
+        <Link className=" bg-lime-800 w-1/5  hover:bg-lime-600 rounded-[22px] flex flex-col justify-between items-center p-6" to="/network">
           Network
+          <img src="/signal.png" className=" w-40 h-40 " alt="" />
           <p>
             48 Mbps ↓
           </p>

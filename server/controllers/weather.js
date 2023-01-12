@@ -3,10 +3,12 @@ const models = require('../models');
 exports.get = (req, res) => {
   models.weather.get()
     .then((data) => {
+      // console.log('data: ', data);
       res.status(201).send(data);
     })
     .catch((err) => {
       console.log('ERROR IN CONTROLS: ', err.message);
+      console.log('detail: ', err.detail);
       res.status(501);
     });
 };

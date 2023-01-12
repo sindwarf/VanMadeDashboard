@@ -6,25 +6,26 @@ exports.get = () => (
     .then((data) => {
       const ONE_HOUR = 60 * 60 * 1000;
       const currentTime = new Date();
-      if ((currentTime - data.updated) < ONE_HOUR) {
-        console.log('it is an hour old');
+      if ((currentTime - data[0].updated) > (ONE_HOUR * 12)) {
+        console.log('it is more than 12 hour old');
         return (axios.get('https://api.weather.gov/gridpoints/EWX/129,72/forecast')
           .then((response) => {
             const weatherObj = {
               updated: response.data.properties.updated,
               gridId: 'EWX',
-              gridX: 129123,
+              gridX: 129,
               gridY: 72,
               forecast: response.data.properties.periods,
             };
-            this.save(weatherObj)
-              .then(() => (Promise.resolve(weatherObj)))
+            return (this.save(weatherObj)
+              .then(() => ((weatherObj)))
               .catch((err) => {
                 console.log('ERROR SAVING TO MONGOOSE', err.message);
-              });
+              })
+            );
           }));
       }
-      return Promise.resolve(data);
+      return Promise.resolve(data[0]);
     })
 );
 

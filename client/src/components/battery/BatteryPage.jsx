@@ -9,7 +9,7 @@ function BatteryPage() {
   return (
     <h1 className="text-3xl font-bold underline">
       Hello I Am BatteryPage Data:
-      {batteryData.soc} %
+      {batteryData[0].soc} %
     </h1>
   );
 }

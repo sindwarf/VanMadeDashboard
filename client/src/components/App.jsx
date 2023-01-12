@@ -24,7 +24,9 @@ const router = createBrowserRouter([
         path: 'home',
         element: <HomePage />,
         errorElement: <ErrorPage />,
-        loader: weatherLoader,
+        loader: async () => (
+          { weather: await weatherLoader(), battery: await batteryLoader() }
+        ),
       },
       {
         path: 'weather',
