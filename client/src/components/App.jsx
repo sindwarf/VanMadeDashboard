@@ -6,6 +6,7 @@ import {
 import HomePage from './home/HomePage';
 import WeatherPage, { weatherLoader } from './weather/WeatherPage';
 import BatteryPage, { batteryLoader } from './battery/BatteryPage';
+import NetworkPage from './network/NetworkPage';
 import PhotosPage from './photos/PhotosPage';
 import HomeLayout from './layouts/HomeLayout';
 import ErrorPage from '../ErrorPage';
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'network',
-        element: <PhotosPage />,
+        element: <NetworkPage />,
         errorElement: <ErrorPage />,
       },
       {

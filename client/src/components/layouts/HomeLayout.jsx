@@ -14,10 +14,10 @@ function HomeLayout() {
     };
   });
   return (
-    <div className="  bg-champagne">
-      <header className=" bg-onyx border-b-4  border-green pt-4 pb-4 flex flex-col justify-between items-center h-40 text-champagne">
+    <div className=" h-full bg-champagne">
+      <header className=" font-sans bg-onyx border-b-4  border-green pt-4 pb-4 flex flex-col justify-between items-center h-full text-champagne">
         <div className="text-2xl">{time}</div>
-        <h1 className=" text-5xl ">
+        <h1 className=" text-5xl text-center">
           VanMade Dashboard
         </h1>
         <NavLink to="/home" className="hover:underline text-2xl ">Home</NavLink>

@@ -8,6 +8,7 @@ import {
 // loader functions have the advantage of loading information before the page loads
 
 function HomePage() {
+  console.log(new Date());
   const loaderData = useLoaderData();
   console.log('loaderData', loaderData);
   const weatherData = loaderData.weather;
@@ -16,10 +17,10 @@ function HomePage() {
   // navlink lets you style active links
   return (
     <div className=" bg-slate-500 flex flex-col min-h-screen p-10 ">
-      <div className=" mt-1 m-5 flex flex-1 justify-center text-2xl">
+      <div className=" mt-1 m-5 flex flex-1 justify-center text-xl">
         <Link to="/weather" className=" bg-green w-80  hover:bg-light-green  rounded-[22px] flex flex-col justify-between items-center p-6">
-          Weather
-          <img src={weatherData.forecast[0].icon} className="w-40 h-40" alt="" />
+          <h4 className="font-bold text-2xl">Weather</h4>
+          <img src={weatherData.forecast[0].icon} className="m-2 w-40 h-40" alt="" />
           <p>
             {weatherData.forecast[0].shortForecast}
             {' '}
@@ -29,8 +30,8 @@ function HomePage() {
         </Link>
       </div>
       <div className=" m-5 flex flex-1 justify-center text-2xl">
-        <Link className=" bg-green w-80 fo hover:bg-light-green rounded-[22px] flex flex-col justify-between items-center p-6" to="/battery">
-          Battery
+        <Link className=" bg-green w-80 fo hover:bg-light-green rounded-[22px] flex flex-col justify-between items-center p-6 text-xl" to="/battery">
+          <h4 className="font-bold text-2xl">Battery</h4>
           <img src="/carBattery.png" className=" w-40 h-40 " alt="" />
           <p>
             {batteryData.soc}
@@ -39,8 +40,8 @@ function HomePage() {
         </Link>
       </div>
       <div className="m-5 flex flex-1 justify-center text-2xl">
-        <Link className=" bg-green w-80 fo hover:bg-light-green rounded-[22px] flex flex-col justify-between items-center p-6" to="/network">
-          Network
+        <Link className=" bg-green w-80 fo hover:bg-light-green rounded-[22px] flex flex-col justify-between items-center p-6 text-xl" to="/network">
+          <h4 className="font-bold text-2xl">Network</h4>
           <img src="/signal.png" className=" w-40 h-40 " alt="" />
           <p>
             48 Mbps ↓

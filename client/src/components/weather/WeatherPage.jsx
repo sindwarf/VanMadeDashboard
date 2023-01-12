@@ -7,7 +7,7 @@ import {
 function WeatherPage() {
   const weatherData = useLoaderData();
   return (
-    <div className=" h-screen">
+    <div className=" bg-champagne h-screen">
       <div className="flex ml-20 mr-20 mt-10 rounded-[22px] h-1/4 bg-green">
         {weatherData.forecast.map((forecast, i) => {
           if (i < 2) {
@@ -15,7 +15,7 @@ function WeatherPage() {
               <div key={i} className="rounded-[22px] flex flex-1 p-2 items-center">
                 <img src={forecast.icon} alt="" className="flex flex-[.25_1_0%] p-2" />
                 <div className="flex flex-col flex-1">
-                  <div className=" font-bold text-1xl">
+                  <div className=" font-bold text-xl">
                     {forecast.name}
                   </div>
                   <div>
@@ -35,7 +35,7 @@ function WeatherPage() {
               <div key={i} className="rounded-[22px] flex flex-1 p-2 items-center">
                 <img src={forecast.icon} alt="" className="flex flex-[.25_1_0%] p-2" />
                 <div className="flex flex-col flex-1">
-                  <div className=" font-bold text-1xl min-w-max">
+                  <div className=" font-bold text-xl min-w-max">
                     {forecast.name}
                   </div>
                   <div>
@@ -55,7 +55,7 @@ function WeatherPage() {
               <div key={i} className="rounded-[22px] flex flex-1 p-2 items-center">
                 <img src={forecast.icon} alt="" className="flex flex-[.25_1_0%] p-5" />
                 <div className="flex flex-col flex-1">
-                  <div className=" font-bold text-1xl">
+                  <div className=" font-bold text-xl">
                     {forecast.name}
                   </div>
                   <div>

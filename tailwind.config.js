@@ -15,7 +15,7 @@ module.exports = {
       'light-green': '#87AC8D',
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
+      sans: ['Abril Fatface', 'Abril Fatface'],
       serif: ['Merriweather', 'serif'],
     },
     extend: {
