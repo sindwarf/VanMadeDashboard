@@ -4,68 +4,92 @@ import Chart from 'chart.js/auto';
 import {
   useLoaderData,
 } from 'react-router-dom';
-import { line } from 'react-chartjs-2';
+import LineChart from './LineChart';
 
 function BatteryPage() {
-  const data = {
-    labels: ['Red', 'Orange', 'Blue'],
-    // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
-    datasets: [
-        {
-          label: 'Popularity of colours',
-          data: [55, 23, 96],
-          // you can set indiviual colors for each bar
-          backgroundColor: [
-            'rgba(255, 255, 255, 0.6)',
-            'rgba(255, 255, 255, 0.6)',
-            'rgba(255, 255, 255, 0.6)',
-          ],
-          borderWidth: 1,
-        }
-    ]
-}
-const [chartData, setChartData] = useState({
-  labels: Data.map((data) => data.year),
-  datasets: [
-    {
-      label: "Users Gained ",
-      data: Data.map((data) => data.userGain),
-      backgroundColor: [
-        "rgba(75,192,192,1)",
-        "#ecf0f1",
-        "#50AF95",
-        "#f3ba2f",
-        "#2a71d0"
-      ],
-      borderColor: "black",
-      borderWidth: 2
-    }
-  ]
-});
   const batteryData = useLoaderData();
+  const [socData, setSocData] = useState({
+    labels: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+    datasets: [
+      {
+        label: 'State of Charge',
+        data: batteryData.slice(0).reverse().map((values) => (values.soc)),
+        backgroundColor: [
+          '#BD6B73',
+        ],
+        color: [
+          '#BD6B73',
+        ],
+        borderColor: '#black',
+        borderWidth: 2,
+        yAxisID: 'y',
+      },
+    ],
+  });
+  const [voltageChartData, setVoltageChartData] = useState({
+    labels: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+    datasets: [
+      {
+        label: 'Battery Voltage',
+        data: batteryData.slice(0).reverse().map((values) => (values.voltage / 1000)),
+        backgroundColor: [
+          '#BD6B73',
+        ],
+        color: [
+          '#BD6B73',
+        ],
+        borderColor: '#BD6B73',
+        borderWidth: 2,
+        yAxisID: 'y',
+      },
+      {
+        label: 'Power draw in Amps',
+        data: batteryData.map((values) => (values.current / 1000)),
+        backgroundColor: [
+          '#729B79',
+        ],
+        color: [
+          '#BD6B73',
+        ],
+        borderColor: '#729B79',
+        borderWidth: 2,
+        yAxisID: 'y1',
+      },
+    ],
+  });
+  const scalesPercentage = {
+    y: {
+      ticks: {
+        callback: (value) => (`${value} %`),
+      },
+    },
+  };
+  const scalesVoltage = {
+    y: {
+      ticks: {
+        callback: (value) => (`${value} V`),
+      },
+      type: 'linear',
+      display: true,
+      position: 'left',
+    },
+    y1: {
+      ticks: {
+        callback: (value) => (`${value} A`),
+      },
+      type: 'linear',
+      display: true,
+      position: 'right',
+      grid: {
+        drawOnChartArea: false,
+      },
+    },
+  };
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-        Hello I Am BatteryPage Data:
-        {batteryData[0].soc} %
-      </h1>
-      <div className="chart-container">
-      <h2 style={{ textAlign: "center" }}>Line Chart</h2>
-      <Line
-        data={chartData}
-        options={{
-          plugins: {
-            title: {
-              display: true,
-              text: "Users Gained between 2016-2020"
-            },
-            legend: {
-              display: false
-            }
-          }
-        }}
-      />
-    </div>
+    <div className="h-screen bg-champagne">
+      <LineChart chartData={voltageChartData} scales={scalesVoltage} />
+      <LineChart chartData={socData} scales={scalesPercentage} />
     </div>
   );
 }
