@@ -6,24 +6,69 @@ import {
 
 function WeatherPage() {
   const weatherData = useLoaderData();
-  console.log('weather data', weatherData);
   return (
-    <h1 className="text-2xl underline">
-      {weatherData.forecast.map((forecast, i) => (
-        <div key={i} className="border-2">
-          <img src={forecast.icon} alt="" />
-          {forecast.name}
-          {forecast.detailedForecast}
-          <p>
-            {forecast.temperature}
-            {forecast.temperatureUnit}
-          </p>
-          Wind speed:
-          {' '}
-          {forecast.windSpeed}
-        </div>
-      ))}
-    </h1>
+    <div className=" h-screen">
+      <div className="flex ml-20 mr-20 mt-10 rounded-[22px] h-1/4 bg-green">
+        {weatherData.forecast.map((forecast, i) => {
+          if (i < 2) {
+            return (
+              <div key={i} className="rounded-[22px] flex flex-1 p-2 items-center">
+                <img src={forecast.icon} alt="" className="flex flex-[.25_1_0%] p-2" />
+                <div className="flex flex-col flex-1">
+                  <div className=" font-bold text-1xl">
+                    {forecast.name}
+                  </div>
+                  <div>
+                    {forecast.detailedForecast}
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          return null;
+        })}
+      </div>
+      <div className="flex ml-20 mr-20 mt-10 rounded-[22px] h-1/4 bg-green flex-wrap">
+        {weatherData.forecast.map((forecast, i) => {
+          if (i >= 2 && i < 6) {
+            return (
+              <div key={i} className="rounded-[22px] flex flex-1 p-2 items-center">
+                <img src={forecast.icon} alt="" className="flex flex-[.25_1_0%] p-2" />
+                <div className="flex flex-col flex-1">
+                  <div className=" font-bold text-1xl min-w-max">
+                    {forecast.name}
+                  </div>
+                  <div>
+                    {forecast.detailedForecast}
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          return null;
+        })}
+      </div>
+      <div className="flex ml-20 mr-20 mt-10 rounded-[22px] h-1/4 bg-green">
+        {weatherData.forecast.map((forecast, i) => {
+          if (i >= 6 && i < 10) {
+            return (
+              <div key={i} className="rounded-[22px] flex flex-1 p-2 items-center">
+                <img src={forecast.icon} alt="" className="flex flex-[.25_1_0%] p-5" />
+                <div className="flex flex-col flex-1">
+                  <div className=" font-bold text-1xl">
+                    {forecast.name}
+                  </div>
+                  <div>
+                    {forecast.detailedForecast}
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          return null;
+        })}
+      </div>
+    </div>
   );
 }
 

@@ -6,20 +6,25 @@ module.exports = {
     './client/src/components/**/*.{html,jsx}',
   ],
   theme: {
+    colors: {
+      'champagne': '#F5E2C8',
+      'mauve': '#BD6B73',
+      'coral': '#F6828C',
+      'onyx': '#444545',
+      'green': '#729B79',
+      'light-green': '#87AC8D',
+    },
+    fontFamily: {
+      sans: ['Graphik', 'sans-serif'],
+      serif: ['Merriweather', 'serif'],
+    },
     extend: {
-      colors: {
-        'custom-base-red': '#ff2f23',
-        'custom-light-red': '#fb4a40',
-        'custom-white': '#fefcfb',
-        'custom-dark-gray': '#5f5f6c',
-        'custom-light-gray': '#f7f7f7',
-        'custom-border-gray': '#eeeeee',
+      spacing: {
+        '8xl': '96rem',
+        '9xl': '128rem',
       },
-      fontFamily: {
-        poppins: ["'Poppins'", 'sans-serif'],
-      },
-      dropShadow: {
-        'custom-btn-shadow': '0px 5px 15px rgba(255, 47, 35, 0.4)',
+      borderRadius: {
+        '4xl': '2rem',
       },
     },
   },

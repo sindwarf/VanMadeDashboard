@@ -15,9 +15,9 @@ function HomePage() {
   // weatherData = weatherData[0];
   // navlink lets you style active links
   return (
-    <div className=" bg-slate-500 flex flex-col min-h-screen border-2 p-10 ">
-      <div className="m-5 flex flex-1 border-2 justify-center">
-        <Link to="/weather" className=" bg-lime-800 w-1/5  hover:bg-lime-600 rounded-[22px] flex flex-col justify-between items-center p-6">
+    <div className=" bg-slate-500 flex flex-col min-h-screen p-10 ">
+      <div className=" mt-1 m-5 flex flex-1 justify-center text-2xl">
+        <Link to="/weather" className=" bg-green w-80  hover:bg-light-green  rounded-[22px] flex flex-col justify-between items-center p-6">
           Weather
           <img src={weatherData.forecast[0].icon} className="w-40 h-40" alt="" />
           <p>
@@ -28,8 +28,8 @@ function HomePage() {
           </p>
         </Link>
       </div>
-      <div className=" m-5 flex flex-1 border-2 justify-center">
-        <Link className=" bg-lime-800 w-1/5  hover:bg-lime-600 rounded-[22px] flex flex-col justify-between items-center p-6" to="/battery">
+      <div className=" m-5 flex flex-1 justify-center text-2xl">
+        <Link className=" bg-green w-80 fo hover:bg-light-green rounded-[22px] flex flex-col justify-between items-center p-6" to="/battery">
           Battery
           <img src="/carBattery.png" className=" w-40 h-40 " alt="" />
           <p>
@@ -38,8 +38,8 @@ function HomePage() {
           </p>
         </Link>
       </div>
-      <div className="m-5 flex flex-1 border-2 justify-center">
-        <Link className=" bg-lime-800 w-1/5  hover:bg-lime-600 rounded-[22px] flex flex-col justify-between items-center p-6" to="/network">
+      <div className="m-5 flex flex-1 justify-center text-2xl">
+        <Link className=" bg-green w-80 fo hover:bg-light-green rounded-[22px] flex flex-col justify-between items-center p-6" to="/network">
           Network
           <img src="/signal.png" className=" w-40 h-40 " alt="" />
           <p>
