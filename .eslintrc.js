@@ -7,6 +7,8 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
   ],
   overrides: [
   ],
@@ -19,4 +21,5 @@ module.exports = {
   ],
   rules: {
   },
+  root: true,
 };
