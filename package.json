@@ -2,11 +2,10 @@
   "name": "vanmadedashboard",
   "version": "1.0.0",
   "description": "",
-  "main": "./client/index.jsx",
+  "main": "/index.jsx",
   "scripts": {
-    "bblTest": "nodemon --exec babel-node index.js",
-    "react-dev": "webpack --watch",
-    "build": "webpack",
+    "react-dev": "webpack --watch --config ./config/webpack.config.react.js",
+    "build-react": "webpack --config ./config/webpack.config.react.js",
     "start-dev": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
